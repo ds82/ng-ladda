@@ -8,19 +8,12 @@ angular.module('io.dennis.ladda')
 Enchilada.$inject = ['ngLaddaService'];
 function Enchilada(ngLaddaService) {
   return {
-    scope: {},
+    scope: false,
     restrict: 'A',
     link: link
   };
 
   function link(scope, element, attrs) {
-    var spinning = false;
-
-    // set some defaults
-    if (!attrs.dataStyle) {
-      attrs.$set('dataStyle', 'zoom-in');
-    }
-
     element
       .css('overflow', 'inherit')
       .addClass('ladda-button');
@@ -30,7 +23,12 @@ function Enchilada(ngLaddaService) {
     wrapInner(element[0], wrap);
 
     var ladda = Ladda.create(element[0]);
+    ngLaddaService.subscribe(attrs.ngLadda, onRequest);
 
+    function onRequest(start) {
+      console.log('onRequest', start);
+      return (start) ? ladda.start() : ladda.stop();
+    }
   }
 }
 

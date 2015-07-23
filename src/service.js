@@ -1,5 +1,8 @@
 'use strict';
 
+var $set  = require('lodash.set');
+var $get  = require('lodash.get');
+
 angular.module('io.dennis.ladda')
   .provider('ngLaddaService', LaddaServiceProvider)
   .config(Config)
@@ -9,9 +12,13 @@ LaddaServiceProvider.$inject = [];
 function LaddaServiceProvider() {
 
   var laddaService = false;
-  this.$get = $get;
 
-  function $get() {
+  var routeMap = {};
+  var eventMap = {};
+
+  this.$get = get;
+
+  function get() {
     if (!laddaService) {
       laddaService = new LaddaService();
     }
@@ -21,19 +28,34 @@ function LaddaServiceProvider() {
   function LaddaService() {
     var self = this;
     self.register = register;
+    self.subscribe = subscribe;
     self.triggerResponse = triggerResponse;
     self.triggerRequest = triggerRequest;
 
     function register(method, route, event) {
-      console.log('register', method, route, event);
+      $set(routeMap, [method, route], event);
+    }
+
+    function subscribe(event, fn) {
+      var list = $get(eventMap, event, []);
+      list.push(fn);
+      $set(eventMap, event, list);
     }
 
     function triggerRequest(method, route) {
-      console.log('triggerRequest', method, route);
+      trigger(true, method, route);
     }
 
     function triggerResponse(method, route) {
-      console.log('triggerResponse', method, route);
+      trigger(false, method, route);
+    }
+
+    function trigger(start, method, route) {
+      var event = $get(routeMap, [method, route], false);
+      if (event) {
+        var list = $get(eventMap, event, []);
+        list.forEach(function(cb) { cb(start); });
+      }
     }
   }
 }
