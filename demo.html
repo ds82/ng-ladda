@@ -1,0 +1,24 @@
+<html ng-app="app">
+  <head>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="dist/ng-ladda.js"></script>
+    <script>
+      angular.module('app', [
+        'io.dennis.ladda'
+      ])
+      .controller('AppCtrl', AppCtrl)
+
+      ;
+
+      function AppCtrl() {
+        var vm = this;
+        vm.version = '0.0.1';
+      }
+
+    </script>
+  </head>
+  <body ng-controller="AppCtrl as app">
+    <button ng-ladda="">Test</button>
+
+  </body>
+</html>

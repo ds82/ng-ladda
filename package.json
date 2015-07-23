@@ -1,0 +1,19 @@
+{
+  "name": "ng-ladda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "browserify": "browserify index.js --standalone ng-ladda | derequire > dist/ng-ladda.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "angular": "^1.4.3",
+    "browserify": "^11.0.0",
+    "derequire": "^2.0.0",
+    "ladda": "^0.9.8"
+  }
+}
