@@ -14,6 +14,8 @@
     "angular": "^1.4.3",
     "browserify": "^11.0.0",
     "derequire": "^2.0.0",
-    "ladda": "^0.9.8"
+    "ladda": "^0.9.8",
+    "lodash.get": "^3.7.0",
+    "lodash.set": "^3.7.4"
   }
 }
