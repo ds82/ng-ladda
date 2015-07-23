@@ -1,0 +1,82 @@
+<html ng-app="app">
+  <head>
+    <title>ng-ladda demo</title>
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../dist/ng-ladda.js"></script>
+    <script>
+      angular.module('app', ['io.dennis.ladda'])
+        .config(DemoDelayBackend)
+        .run(ConfigOfYourApp)
+        .controller('AppCtrl', AppCtrl)
+      ;
+
+      ConfigOfYourApp.$inject = ['ngLaddaService'];
+      function ConfigOfYourApp($ladda) {
+        $ladda.register('GET', 'assets/data.json', 'get-data-json');
+      }
+
+      AppCtrl.$inject = ['$http'];
+      function AppCtrl($http) {
+        var vm = this;
+        vm.get = get;
+
+        function get(what) {
+          var url = 'assets/' + what;
+          $http.get(url);
+        }
+      }
+
+      //
+      // THE BELOW CODE IS JUST FOR THE DEMO - IGNORE!
+      //
+      DemoDelayBackend.$inject = ['$provide'];
+      function DemoDelayBackend($provide) {
+
+        $provide.decorator('$httpBackend', $httpBackendDecorator);
+
+        function $httpBackendDecorator($delegate) {
+          var proxy = function(method, url, data, callback, headers) {
+            var interceptor = function() {
+              var _this = this;
+              var _arguments = arguments;
+              setTimeout(function() {
+                callback.apply(_this, _arguments);
+              }, 2000);
+            };
+            return $delegate.call(this, method, url, data, interceptor, headers);
+          };
+          for(var key in $delegate) {
+            proxy[key] = $delegate[key];
+          }
+          return proxy;
+        }
+      }
+    </script>
+    <link
+      rel="stylesheet"
+      href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../node_modules/ladda/dist/ladda-themeless.min.css">
+  </head>
+  <body ng-controller="AppCtrl as app">
+    <div class="container">
+
+      <div class="page-header">
+        <h1>ng-ladda examples</h1>
+      </div>
+
+      <h3>examples</h3>
+
+      <p>
+        <button
+          class="btn btn-default"
+          ng-ladda="get-data-json"
+          ng-click="app.get('data.json')"
+          data-spinner-color="#000"
+          data-style="zoom-in"
+        >Test 1</button>
+      </p>
+
+    </div> <!-- /container -->
+  </body>
+</html>
