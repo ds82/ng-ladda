@@ -1,6 +1,7 @@
 # ng-ladda
 
-[ladda]: "https://github.com/hakimel/Ladda"
+[ladda]: https://github.com/hakimel/Ladda
+[gh-pages]: https://ds82.github.io/ng-ladda/demo/
 
 an angular module to use [ladda] with ease.
 This module is *different* from other angular ladda modules you find on github.
@@ -12,6 +13,10 @@ This module is *different* from other angular ladda modules you find on github.
 * clean up callbacks
 * add unit tests
 
+
+## Demo
+
+[demo][gh-pages]
 
 ## Problem
 
