@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "browserify": "browserify index.js --standalone ng-ladda | derequire > dist/ng-ladda.js"
+    "browserify": "browserify index.js --standalone ng-ladda | derequire > dist/ng-ladda.js",
+    "gh-pages": "bin/gh-pages.sh"
   },
   "keywords": [],
   "author": "Dennis Saenger <ng-ladda-15@mail.ds82.de>",
