@@ -36,10 +36,24 @@ function LaddaServiceProvider() {
       $set(routeMap, [method, route], event);
     }
 
-    function subscribe(event, fn) {
+    function subscribe(scope, event, fn) {
       var list = $get(eventMap, event, []);
       list.push(fn);
       $set(eventMap, event, list);
+
+      scope.$on('$destroy', function() {
+        cancelSubscription(event, fn);
+      });
+    }
+
+    function cancelSubscription(event, fn) {
+      var list = $get(eventMap, event, []);
+      var find = list.indexOf(fn);
+
+      if (find > -1) {
+        list.splice(find, 1);
+        $set(eventMap, event, list);
+      }
     }
 
     function triggerRequest(method, route) {

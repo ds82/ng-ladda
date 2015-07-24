@@ -23,10 +23,9 @@ function Enchilada(ngLaddaService) {
     wrapInner(element[0], wrap);
 
     var ladda = Ladda.create(element[0]);
-    ngLaddaService.subscribe(attrs.ngLadda, onRequest);
+    ngLaddaService.subscribe(scope, attrs.ngLadda, onRequest);
 
     function onRequest(start) {
-      console.log('onRequest', start);
       return (start) ? ladda.start() : ladda.stop();
     }
   }

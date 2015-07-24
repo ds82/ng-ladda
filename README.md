@@ -10,7 +10,7 @@ This module is *different* from other angular ladda modules you find on github.
 
 *Todo*:
 
-* clean up callbacks
+* ~~clean up callbacks~~
 * add unit tests
 
 
