@@ -1,6 +1,6 @@
 {
   "name": "ng-ladda",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,8 +8,8 @@
     "browserify": "browserify index.js --standalone ng-ladda | derequire > dist/ng-ladda.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Dennis Saenger <ng-ladda-15@mail.ds82.de>",
+  "license": "MIT",
   "devDependencies": {
     "angular": "^1.4.3",
     "browserify": "^11.0.0",
