@@ -96,8 +96,45 @@ function SomeController($resource) {
 
 ```html
   ...
-    <button ladda="query-some-resource" ng-click="vm.load()">Load something!</button>
+    <button ng-ladda="query-some-resource" ng-click="vm.load()">Load something!</button>
   ...
 ```
 
 No boilerplate code in your controller (:cat:)
+
+## How it works
+
+`ng-ladda` hooks into angular's $http provider and observes every request to trigger registered load-indicators via named events. The overhead to do this is very minimal.
+
+## Usage :monkey:
+
+install via npm:
+
+```bash
+npm install ng-ladda
+```
+
+Include js file via script tag or in your browserify bundle via `require('ng-ladda');`:
+```html
+<script src="node_modules/ng-ladda/dist/ng-ladda.js" type="text/javascript"></script>
+```
+
+Setup your angular app:
+```js
+angular.module('myapp', ['io.dennis.ladda']).config(Config);
+
+Config.$inject = ['ngLaddaService']
+function Config($ladda) {
+  // setup your routes ..
+  $ladda.register('GET', '/some/resource/query', 'query-some-resource');
+}
+```
+
+Use the `ladda-directive` in your HTML:
+```html
+  ...
+    <button ng-ladda="query-some-resource" ng-click="vm.load()">Load something!</button>
+  ...
+```
+
+
