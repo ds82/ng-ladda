@@ -16,10 +16,20 @@
   "license": "MIT",
   "devDependencies": {
     "angular": "^1.4.3",
+    "angular-mocks": "^1.4.3",
     "browserify": "^11.0.0",
     "derequire": "^2.0.0",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.3",
+    "karma-browserify": "^4.2.1",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "karma-sauce-launcher": "^0.2.14",
     "ladda": "^0.9.8",
     "lodash.get": "^3.7.0",
-    "lodash.set": "^3.7.4"
+    "lodash.set": "^3.7.4",
+    "phantomjs": "^1.9.17",
+    "proxyquireify": "^3.0.0"
   }
 }
