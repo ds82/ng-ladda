@@ -2,5 +2,5 @@
 
 angular.module('io.dennis.ladda', []);
 
-require('./src/service');
-require('./src/directive');
+require('./service');
+require('./directive');
