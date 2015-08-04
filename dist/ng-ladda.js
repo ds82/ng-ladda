@@ -1,12 +1,4 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.ngLadda = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
-'use strict';
-
-angular.module('io.dennis.ladda', []);
-
-_dereq_('./src/service');
-_dereq_('./src/directive');
-
-},{"./src/directive":11,"./src/service":12}],2:[function(_dereq_,module,exports){
 /*!
  * Ladda 0.9.8 (2015-03-19, 17:22)
  * http://lab.hakim.se/ladda
@@ -15,7 +7,7 @@ _dereq_('./src/directive');
  * Copyright (C) 2015 Hakim El Hattab, http://hakim.se
  */
 (function(t,e){"object"==typeof exports?module.exports=e(_dereq_("spin.js")):"function"==typeof define&&define.amd?define(["spin"],e):t.Ladda=e(t.Spinner)})(this,function(t){"use strict";function e(t){if(t===void 0)return console.warn("Ladda button target must be defined."),void 0;t.querySelector(".ladda-label")||(t.innerHTML='<span class="ladda-label">'+t.innerHTML+"</span>");var e,n=t.querySelector(".ladda-spinner");n||(n=document.createElement("span"),n.className="ladda-spinner"),t.appendChild(n);var r,a={start:function(){return e||(e=o(t)),t.setAttribute("disabled",""),t.setAttribute("data-loading",""),clearTimeout(r),e.spin(n),this.setProgress(0),this},startAfter:function(t){return clearTimeout(r),r=setTimeout(function(){a.start()},t),this},stop:function(){return t.removeAttribute("disabled"),t.removeAttribute("data-loading"),clearTimeout(r),e&&(r=setTimeout(function(){e.stop()},1e3)),this},toggle:function(){return this.isLoading()?this.stop():this.start(),this},setProgress:function(e){e=Math.max(Math.min(e,1),0);var n=t.querySelector(".ladda-progress");0===e&&n&&n.parentNode?n.parentNode.removeChild(n):(n||(n=document.createElement("div"),n.className="ladda-progress",t.appendChild(n)),n.style.width=(e||0)*t.offsetWidth+"px")},enable:function(){return this.stop(),this},disable:function(){return this.stop(),t.setAttribute("disabled",""),this},isLoading:function(){return t.hasAttribute("data-loading")},remove:function(){clearTimeout(r),t.removeAttribute("disabled",""),t.removeAttribute("data-loading",""),e&&(e.stop(),e=null);for(var n=0,i=u.length;i>n;n++)if(a===u[n]){u.splice(n,1);break}}};return u.push(a),a}function n(t,e){for(;t.parentNode&&t.tagName!==e;)t=t.parentNode;return e===t.tagName?t:void 0}function r(t){for(var e=["input","textarea","select"],n=[],r=0;e.length>r;r++)for(var a=t.getElementsByTagName(e[r]),i=0;a.length>i;i++)a[i].hasAttribute("required")&&n.push(a[i]);return n}function a(t,a){a=a||{};var i=[];"string"==typeof t?i=s(document.querySelectorAll(t)):"object"==typeof t&&"string"==typeof t.nodeName&&(i=[t]);for(var o=0,u=i.length;u>o;o++)(function(){var t=i[o];if("function"==typeof t.addEventListener){var s=e(t),u=-1;t.addEventListener("click",function(){var e=!0,i=n(t,"FORM");if(i!==void 0)for(var o=r(i),d=0;o.length>d;d++)""===o[d].value.replace(/^\s+|\s+$/g,"")&&(e=!1),"checkbox"!==o[d].type&&"radio"!==o[d].type||o[d].checked||(e=!1),"email"===o[d].type&&(e=/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(o[d].value));e&&(s.startAfter(1),"number"==typeof a.timeout&&(clearTimeout(u),u=setTimeout(s.stop,a.timeout)),"function"==typeof a.callback&&a.callback.apply(null,[s]))},!1)}})()}function i(){for(var t=0,e=u.length;e>t;t++)u[t].stop()}function o(e){var n,r=e.offsetHeight;0===r&&(r=parseFloat(window.getComputedStyle(e).height)),r>32&&(r*=.8),e.hasAttribute("data-spinner-size")&&(r=parseInt(e.getAttribute("data-spinner-size"),10)),e.hasAttribute("data-spinner-color")&&(n=e.getAttribute("data-spinner-color"));var a=12,i=.2*r,o=.6*i,s=7>i?2:3;return new t({color:n||"#fff",lines:a,radius:i,length:o,width:s,zIndex:"auto",top:"auto",left:"auto",className:""})}function s(t){for(var e=[],n=0;t.length>n;n++)e.push(t[n]);return e}var u=[];return{bind:a,create:e,stopAll:i}});
-},{"spin.js":3}],3:[function(_dereq_,module,exports){
+},{"spin.js":2}],2:[function(_dereq_,module,exports){
 /**
  * Copyright (c) 2011-2014 Felix Gnass
  * Licensed under the MIT license
@@ -366,7 +358,7 @@ _dereq_('./src/directive');
 
 }));
 
-},{}],4:[function(_dereq_,module,exports){
+},{}],3:[function(_dereq_,module,exports){
 /**
  * lodash 3.7.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -409,7 +401,7 @@ function get(object, path, defaultValue) {
 
 module.exports = get;
 
-},{"lodash._baseget":5,"lodash._topath":6}],5:[function(_dereq_,module,exports){
+},{"lodash._baseget":4,"lodash._topath":5}],4:[function(_dereq_,module,exports){
 /**
  * lodash 3.7.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -485,7 +477,7 @@ function isObject(value) {
 
 module.exports = baseGet;
 
-},{}],6:[function(_dereq_,module,exports){
+},{}],5:[function(_dereq_,module,exports){
 /**
  * lodash 3.8.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -534,7 +526,7 @@ function toPath(value) {
 
 module.exports = toPath;
 
-},{"lodash.isarray":7}],7:[function(_dereq_,module,exports){
+},{"lodash.isarray":6}],6:[function(_dereq_,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -716,7 +708,7 @@ function isNative(value) {
 
 module.exports = isArray;
 
-},{}],8:[function(_dereq_,module,exports){
+},{}],7:[function(_dereq_,module,exports){
 /**
  * lodash 3.7.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -864,11 +856,11 @@ function set(object, path, value) {
 
 module.exports = set;
 
-},{"lodash._topath":9,"lodash.isarray":10}],9:[function(_dereq_,module,exports){
+},{"lodash._topath":8,"lodash.isarray":9}],8:[function(_dereq_,module,exports){
+arguments[4][5][0].apply(exports,arguments)
+},{"dup":5,"lodash.isarray":9}],9:[function(_dereq_,module,exports){
 arguments[4][6][0].apply(exports,arguments)
-},{"dup":6,"lodash.isarray":10}],10:[function(_dereq_,module,exports){
-arguments[4][7][0].apply(exports,arguments)
-},{"dup":7}],11:[function(_dereq_,module,exports){
+},{"dup":6}],10:[function(_dereq_,module,exports){
 'use strict';
 
 var Ladda = _dereq_('ladda');
@@ -894,10 +886,9 @@ function Enchilada(ngLaddaService) {
     wrapInner(element[0], wrap);
 
     var ladda = Ladda.create(element[0]);
-    ngLaddaService.subscribe(attrs.ngLadda, onRequest);
+    ngLaddaService.subscribe(scope, attrs.ngLadda, onRequest);
 
     function onRequest(start) {
-      console.log('onRequest', start);
       return (start) ? ladda.start() : ladda.stop();
     }
   }
@@ -910,7 +901,15 @@ function wrapInner(parent, wrapper) {
   }
 }
 
-},{"ladda":2}],12:[function(_dereq_,module,exports){
+},{"ladda":1}],11:[function(_dereq_,module,exports){
+'use strict';
+
+angular.module('io.dennis.ladda', []);
+
+_dereq_('./service');
+_dereq_('./directive');
+
+},{"./directive":10,"./service":12}],12:[function(_dereq_,module,exports){
 'use strict';
 
 var $set  = _dereq_('lodash.set');
@@ -949,10 +948,24 @@ function LaddaServiceProvider() {
       $set(routeMap, [method, route], event);
     }
 
-    function subscribe(event, fn) {
+    function subscribe(scope, event, fn) {
       var list = $get(eventMap, event, []);
       list.push(fn);
       $set(eventMap, event, list);
+
+      scope.$on('$destroy', function() {
+        cancelSubscription(event, fn);
+      });
+    }
+
+    function cancelSubscription(event, fn) {
+      var list = $get(eventMap, event, []);
+      var find = list.indexOf(fn);
+
+      if (find > -1) {
+        list.splice(find, 1);
+        $set(eventMap, event, list);
+      }
     }
 
     function triggerRequest(method, route) {
@@ -1009,5 +1022,5 @@ function Config($httpProvider, ngLaddaServiceProvider) {
   }
 }
 
-},{"lodash.get":4,"lodash.set":8}]},{},[1])(1)
+},{"lodash.get":3,"lodash.set":7}]},{},[11])(11)
 });
