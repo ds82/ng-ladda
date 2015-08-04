@@ -8,7 +8,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "browserify": "browserify index.js --standalone ng-ladda | derequire > dist/ng-ladda.js",
+    "browserify": "browserify src/index.js --standalone ng-ladda | derequire > dist/ng-ladda.js",
+    "style": "cp node_modules/ladda/dist/ladda-themeless.min.css dist/ng-ladda.css",
+    "build": "npm run browserify & npm run style",
     "gh-pages": "bin/gh-pages.sh"
   },
   "keywords": [],
