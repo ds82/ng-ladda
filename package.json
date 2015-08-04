@@ -1,7 +1,7 @@
 {
   "name": "ng-ladda",
   "version": "0.0.2",
-  "description": "",
+  "description": "an angular module to use ladda-loaders with ease",
   "main": "src/index.js",
   "browser": {
     "ng-ladda": "dist/ng-ladda.js"
