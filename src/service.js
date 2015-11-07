@@ -1,7 +1,8 @@
 'use strict';
 
-var $set  = require('lodash.set');
-var $get  = require('lodash.get');
+var $set    = require('lodash.set');
+var $get    = require('lodash.get');
+var $filter = require('lodash.filter');
 
 angular.module('io.dennis.ladda')
   .provider('ngLaddaService', LaddaServiceProvider)
@@ -66,10 +67,18 @@ function LaddaServiceProvider() {
 
     function trigger(start, method, route) {
       var event = $get(routeMap, [method, route], false);
-      if (event) {
-        var list = $get(eventMap, event, []);
-        list.forEach(function(cb) { cb(start); });
-      }
+ 
+      var matchingMethods = $get(routeMap, [method], {});
+      var events = $filter(matchingMethods, function(event, registeredRoute) {
+        return !!route.match(new RegExp(registeredRoute));
+      });
+
+      events.forEach(function(event) {
+        if (event) {
+          var list = $get(eventMap, event, []);
+          list.forEach(function(cb) { cb(start); });
+        }
+      });
     }
   }
 }

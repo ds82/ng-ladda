@@ -1,6 +1,6 @@
 {
   "name": "ng-ladda",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "an angular module to use ladda-loaders with ease",
   "main": "dist/ng-ladda.js",
   "browser": {
@@ -14,7 +14,10 @@
     "gh-pages": "bin/gh-pages.sh"
   },
   "keywords": [],
-  "author": "Dennis Saenger <ng-ladda-15@mail.ds82.de>",
+  "author": {
+    "name": "Dennis Saenger",
+    "email": "ng-ladda-15@mail.ds82.de"
+  },
   "license": "MIT",
   "devDependencies": {
     "angular": "^1.4.3",
@@ -33,5 +36,31 @@
     "lodash.set": "^3.7.4",
     "phantomjs": "^1.9.17",
     "proxyquireify": "^3.0.0"
+  },
+  "gitHead": "d4343c4084f8c9f7399c7496b09b33c2c3c2a2cd",
+  "_id": "ng-ladda@0.0.5",
+  "_shasum": "7f080adba5f68b6f3f3383bd23e2da7698e57dae",
+  "_from": "ng-ladda@0.0.5",
+  "_npmVersion": "2.13.2",
+  "_nodeVersion": "0.12.7",
+  "_npmUser": {
+    "name": "ds82",
+    "email": "npm@mail.ds82.de"
+  },
+  "maintainers": [
+    {
+      "name": "ds82",
+      "email": "npm@mail.ds82.de"
+    }
+  ],
+  "dist": {
+    "shasum": "7f080adba5f68b6f3f3383bd23e2da7698e57dae",
+    "tarball": "http://registry.npmjs.org/ng-ladda/-/ng-ladda-0.0.5.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/ng-ladda/-/ng-ladda-0.0.5.tgz",
+  "readme": "ERROR: No README data found!",
+  "dependencies": {
+    "lodash.filter": "3.1.1"
   }
 }
